@@ -38,7 +38,7 @@ enum TokenWriter {
         do {
             try token.write(to: url, atomically: true, encoding: .utf8)
             let readback = try String(contentsOf: url, encoding: .utf8)
-            fileOK = readback?.trimmingCharacters(in: .whitespacesAndNewlines) == token
+            fileOK = readback.trimmingCharacters(in: .whitespacesAndNewlines) == token
         } catch {
             swift_log("[err] TokenWriter: file write/verify failed: \(error.localizedDescription)")
         }
