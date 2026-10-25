@@ -9,6 +9,11 @@ struct ContentView: View {
                 NavigationStack {
                     FileBrowserView(path: "/var/mobile")
                 }
+            } else if exploit.hasStarted {
+                // Real-time log: the user watches the exploit progress and,
+                // if the device panics, the last printed line shows which
+                // kernel step failed.
+                LogView(exploit: exploit)
             } else {
                 runView
             }
