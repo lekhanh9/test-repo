@@ -8,6 +8,7 @@
 
 #include "poc.h"      // int clearsword_run(void)
 #include "sandbox.h"  // int sandbox_escape(uint64_t self_proc); void sandbox_dump(uint64_t, size_t);
+#include "token.h"    // int ghost_issue_token(const char*, uint32_t, char**); int ghost_escape_other(pid_t);
 
 // Real-time log bridge: the C exploit routes its LOG/LOG_ERR/LOG_DEBUG
 // macros through this symbol (see common.h). Declared here so Swift can
