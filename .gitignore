@@ -1,0 +1,11 @@
+# Xcode / XcodeGen generated
+ghost-escape.xcodeproj/
+build/
+DerivedData/
+xcuserdata/
+*.xcarchive
+*.ipa
+Payload/
+
+# macOS
+.DS_Store

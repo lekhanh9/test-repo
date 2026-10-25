@@ -1,0 +1,10 @@
+// ghost-escape bridging header
+// Exposes the ClearSword entry point and the sandbox escape to Swift.
+//
+// Requires HEADER_SEARCH_PATHS to include $(SRCROOT)/Exploit/clearsword
+// (set in project.yml / Xcode build settings).
+
+#import <Foundation/Foundation.h>
+
+#include "poc.h"      // int clearsword_run(void)
+#include "sandbox.h"  // int sandbox_escape(uint64_t self_proc); void sandbox_dump(uint64_t, size_t);

@@ -1,0 +1,40 @@
+# XcodeGen project for ghost-escape
+# Build: xcodegen generate  (or create the Xcode project manually and mirror
+# the build settings below).
+#
+# NOTE: Exploit/binary.c (standalone CLI demo with its own main) is
+# intentionally NOT part of the app target sources.
+name: ghost-escape
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "16.0"
+targets:
+  ghost-escape:
+    type: application
+    platform: iOS
+    sources:
+      - ghost-escape
+      - Exploit/clearsword
+    info:
+      path: ghost-escape/Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.ghost-escape
+        SWIFT_OBJC_BRIDGING_HEADER: ghost-escape/ghost-escape-Bridging-Header.h
+        HEADER_SEARCH_PATHS:
+          - $(SRCROOT)/Exploit/clearsword
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+
+# Shared scheme so `xcodebuild -scheme ghost-escape` works in CI
+# (XcodeGen does not auto-generate schemes).
+schemes:
+  ghost-escape:
+    build:
+      targets:
+        ghost-escape: all
+    run:
+      config: Release
+    archive:
+      config: Release
